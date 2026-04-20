@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #2c3330;
+    font-family: 'Inter', Arial, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bg-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(90,158,114,0.18) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+  .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; height: 100%;
+    padding: 70px 100px;
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 620px;
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #5a9e72;
+  }
+  .tag::before {
+    content: '';
+    display: block;
+    width: 28px; height: 2px;
+    background: #5a9e72;
+  }
+  h1 {
+    font-size: 62px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    letter-spacing: -1px;
+  }
+  h1 span { color: #5a9e72; }
+  p {
+    font-size: 20px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    max-width: 500px;
+  }
+  .url {
+    font-size: 15px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.04em;
+    margin-top: 8px;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    flex-shrink: 0;
+  }
+  /* Keycap */
+  .key {
+    position: relative;
+    width: 180px; height: 160px;
+  }
+  .key-side {
+    position: absolute;
+    bottom: 0; left: 8px; right: 8px;
+    height: 140px;
+    background: linear-gradient(180deg, #9aa89a 0%, #7a877a 100%);
+    border-radius: 18px;
+  }
+  .key-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 140px;
+    background: linear-gradient(145deg, #f8faf8 0%, #dde5dd 100%);
+    border-radius: 18px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px 22px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  }
+  .key-inner {
+    position: absolute;
+    top: 12px; left: 12px; right: 12px; bottom: 12px;
+    background: linear-gradient(145deg, #f0f3f0 0%, #e4eae4 100%);
+    border-radius: 10px;
+  }
+  .key-text {
+    position: relative;
+    z-index: 2;
+    font-size: 28px;
+    font-weight: 900;
+    color: #2c3330;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .key-text span { color: #5a9e72; }
+
+  /* Decorative dots */
+  .dots {
+    position: absolute;
+    top: 40px; right: 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    opacity: 0.12;
+  }
+  .dot {
+    width: 4px; height: 4px;
+    background: #5a9e72;
+    border-radius: 50%;
+  }
+
+  /* Bottom border accent */
+  .accent-line {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, #5a9e72 40%, #5a9e72 60%, transparent 100%);
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <!-- Decorative dots grid -->
+  <div class="dots">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+
+  <div class="container">
+    <div class="left">
+      <div class="tag">Diseño web · Argentina</div>
+      <h1>Tu web,<br><span>a medida.</span></h1>
+      <p>Diseño único, rápido y pensado para convertir visitantes en clientes.</p>
+      <div class="url">proyecto07.com</div>
+    </div>
+    <div class="right">
+      <div class="key">
+        <div class="key-side"></div>
+        <div class="key-top">
+          <div class="key-inner"></div>
+          <div class="key-text">P<span>.07</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accent-line"></div>
+</body>
+</html>
