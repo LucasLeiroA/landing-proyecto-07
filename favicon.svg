@@ -1,14 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- Key 3D side (bottom depth) -->
-  <rect x="2" y="8" width="28" height="22" rx="6" fill="#b0b8b2"/>
-  <!-- Key front face (slightly lighter) -->
-  <rect x="2" y="6" width="28" height="21" rx="6" fill="#d4d8d4"/>
-  <!-- Key top face (white/cream) -->
-  <rect x="2" y="2" width="28" height="21" rx="6" fill="#f2f4f2"/>
-  <!-- Inner recess (keycap dished surface) -->
-  <rect x="5" y="5" width="22" height="15" rx="4" fill="#ebebeb"/>
-  <!-- Subtle inner shadow top -->
-  <rect x="5" y="5" width="22" height="3" rx="4" fill="rgba(0,0,0,0.04)"/>
+  <defs>
+    <linearGradient id="topFace" x1="0%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#dde3dd"/>
+    </linearGradient>
+    <linearGradient id="sideFace" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b8bfb8"/>
+      <stop offset="100%" stop-color="#9aa39a"/>
+    </linearGradient>
+    <linearGradient id="innerDish" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0f3f0"/>
+      <stop offset="100%" stop-color="#e2e8e2"/>
+    </linearGradient>
+    <filter id="ks" x="-10%" y="-10%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.5" flood-color="#1a2420" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Key 3D side face -->
+  <rect x="3" y="9" width="26" height="20" rx="5.5" fill="url(#sideFace)"/>
+
+  <!-- Key top face with shadow -->
+  <rect x="2" y="2" width="27" height="20" rx="5.5" fill="url(#topFace)" filter="url(#ks)"/>
+
+  <!-- Inner keycap dish (recessed area) -->
+  <rect x="5" y="5" width="21" height="14" rx="3.5" fill="url(#innerDish)"/>
+
+  <!-- Top-left highlight -->
+  <rect x="5" y="5" width="21" height="5" rx="3.5" fill="rgba(255,255,255,0.55)"/>
+
   <!-- P.07 text -->
-  <text x="7" y="16" font-family="'Arial Black', Arial, sans-serif" font-size="8" font-weight="900" fill="#2c3330" letter-spacing="-0.3">P.07</text>
+  <text x="6.5" y="15.5"
+    font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="7.5"
+    font-weight="800"
+    fill="#2c3330"
+    letter-spacing="-0.3">P.07</text>
 </svg>
