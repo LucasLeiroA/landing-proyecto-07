@@ -592,112 +592,178 @@
     .project-card {
       border-radius: 16px;
       overflow: hidden;
-      background: #1a2020;
+      background: #161c1c;
       border: 1px solid rgba(255,255,255,0.07);
       transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s;
       cursor: pointer;
     }
     .project-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.55);
     }
 
-    /* Browser mockup */
-    .browser-bar {
-      background: #141a1a;
-      padding: 9px 12px;
+    /* Device showcase area */
+    .device-showcase {
+      width: 100%;
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 22px 22px 0;
+      gap: 12px;
+    }
+
+    /* Laptop frame */
+    .dev-laptop {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .dev-laptop-lid {
+      width: 100%;
+      background: #1e2424;
+      border: 1.5px solid #2c3434;
+      border-radius: 7px 7px 0 0;
+      padding: 3px 3px 0;
+      overflow: hidden;
+    }
+    .dev-laptop-screen {
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      border-radius: 5px 5px 0 0;
+      position: relative;
+    }
+    .dev-laptop-chin {
+      width: 100%;
+      background: #1e2424;
+      border: 1.5px solid #2c3434;
+      border-top: none;
+      height: 7px;
       display: flex;
       align-items: center;
-      gap: 9px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      justify-content: center;
     }
-    .browser-dots {
-      display: flex;
-      gap: 5px;
+    .dev-laptop-chin::after {
+      content: '';
+      width: 18%;
+      height: 3px;
+      background: #2c3434;
+      border-radius: 0 0 2px 2px;
+    }
+    .dev-laptop-base {
+      width: 108%;
+      height: 5px;
+      background: #1a2020;
+      border-radius: 0 0 3px 3px;
+      border: 1.5px solid #252e2e;
+      border-top: none;
+      margin-top: -1px;
+    }
+
+    /* Phone frame */
+    .dev-phone {
+      width: 20%;
       flex-shrink: 0;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .browser-dots span {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-    }
-    .browser-dots span:nth-child(1) { background: #ff5f57; }
-    .browser-dots span:nth-child(2) { background: #febc2e; }
-    .browser-dots span:nth-child(3) { background: #28c840; }
-    .browser-url {
-      flex: 1;
-      background: rgba(255,255,255,0.05);
-      border-radius: 5px;
-      padding: 3px 9px;
-      font-size: 0.58rem;
-      color: rgba(255,255,255,0.28);
-      letter-spacing: 0.03em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .browser-screen {
+    .dev-phone-body {
       width: 100%;
-      aspect-ratio: 16/9;
+      background: #1e2424;
+      border: 1.5px solid #2c3434;
+      border-radius: 16px;
+      padding: 8px 3px 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .dev-phone-notch {
+      width: 32%;
+      height: 4px;
+      background: #2c3434;
+      border-radius: 4px;
+      margin-bottom: 2px;
+    }
+    .dev-phone-screen {
+      width: 100%;
+      aspect-ratio: 9/18;
       overflow: hidden;
+      border-radius: 6px;
       position: relative;
+    }
+    .dev-phone-home {
+      width: 28%;
+      height: 3px;
+      background: #2c3434;
+      border-radius: 3px;
+      margin-top: 2px;
     }
 
     /* Project info */
     .project-info {
-      padding: 1.4rem 1.5rem 1.5rem;
+      padding: 1.3rem 1.4rem 1.4rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
     .project-meta {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.6rem;
     }
     .project-industry {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
     .project-num-badge {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 700;
-      color: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.12);
       letter-spacing: 0.1em;
     }
     .project-info h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: #ffffff;
       line-height: 1.2;
       letter-spacing: -0.01em;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
     .project-info p {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.42);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.38);
       line-height: 1.65;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
     .project-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 1.1rem;
+      gap: 5px;
+      margin-bottom: 1rem;
     }
     .project-chip {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.09);
-      color: rgba(255,255,255,0.45);
-      font-size: 0.62rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.6rem;
       font-weight: 600;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 50px;
     }
     .project-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -1605,53 +1671,91 @@
 
         <!-- ── Hotel Miami ── -->
         <div class="project-card reveal delay-1">
-          <div class="browser-bar">
-            <div class="browser-dots"><span></span><span></span><span></span></div>
-            <div class="browser-url">hotelmiamituc.com</div>
-          </div>
-          <div class="browser-screen">
-            <div style="width:100%;height:100%;background:linear-gradient(150deg,#120d04 0%,#2a1a08 60%,#120d04 100%);position:relative;overflow:hidden;">
-              <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(200,169,110,0.14) 0%,transparent 55%);"></div>
-              <!-- Navbar -->
-              <div style="position:absolute;top:0;left:0;right:0;height:32px;background:rgba(0,0,0,0.5);border-bottom:1px solid rgba(200,169,110,0.14);display:flex;align-items:center;justify-content:space-between;padding:0 14px;z-index:3;">
-                <div style="display:flex;align-items:center;gap:5px;">
-                  <div style="width:14px;height:14px;border:1.5px solid #c8a96e;border-radius:2px;display:flex;align-items:center;justify-content:center;"><div style="width:6px;height:6px;background:#c8a96e;border-radius:1px;"></div></div>
-                  <span style="color:#c8a96e;font-size:0.58rem;font-weight:700;letter-spacing:0.16em;">HOTEL MIAMI</span>
-                </div>
-                <div style="display:flex;gap:10px;align-items:center;">
-                  <span style="color:rgba(200,169,110,0.45);font-size:0.44rem;letter-spacing:0.1em;">HABITACIONES</span>
-                  <span style="color:rgba(200,169,110,0.45);font-size:0.44rem;letter-spacing:0.1em;">SERVICIOS</span>
-                  <span style="background:#c8a96e;color:#120d04;font-size:0.42rem;font-weight:700;padding:3px 8px;border-radius:2px;letter-spacing:0.06em;">RESERVAR</span>
+          <!-- Device showcase: laptop + phone -->
+          <div class="device-showcase" style="background:linear-gradient(160deg,#0e0b06 0%,#1e1408 60%,#0e0b06 100%);">
+            <!-- Glow -->
+            <div style="position:absolute;top:20%;left:20%;width:200px;height:200px;background:radial-gradient(circle,rgba(200,169,110,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+            <!-- Laptop -->
+            <div class="dev-laptop">
+              <div class="dev-laptop-lid">
+                <div class="dev-laptop-screen">
+                  <!-- Desktop mockup Hotel Miami -->
+                  <div style="width:100%;height:100%;background:linear-gradient(150deg,#120d04,#2a1a08);position:relative;overflow:hidden;">
+                    <!-- Navbar -->
+                    <div style="position:absolute;top:0;left:0;right:0;height:22px;background:rgba(0,0,0,0.55);border-bottom:1px solid rgba(200,169,110,0.14);display:flex;align-items:center;justify-content:space-between;padding:0 10px;z-index:3;">
+                      <div style="display:flex;align-items:center;gap:4px;">
+                        <div style="width:10px;height:10px;border:1px solid #c8a96e;border-radius:1px;display:flex;align-items:center;justify-content:center;"><div style="width:4px;height:4px;background:#c8a96e;border-radius:0;"></div></div>
+                        <span style="color:#c8a96e;font-size:0.45rem;font-weight:700;letter-spacing:0.14em;">HOTEL MIAMI</span>
+                      </div>
+                      <div style="display:flex;gap:7px;align-items:center;">
+                        <span style="color:rgba(200,169,110,0.4);font-size:0.35rem;letter-spacing:0.08em;">HABITACIONES</span>
+                        <span style="color:rgba(200,169,110,0.4);font-size:0.35rem;letter-spacing:0.08em;">SERVICIOS</span>
+                        <span style="background:#c8a96e;color:#120d04;font-size:0.3rem;font-weight:700;padding:2px 6px;border-radius:1px;">RESERVAR</span>
+                      </div>
+                    </div>
+                    <!-- Hero desktop -->
+                    <div style="position:absolute;top:22px;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 12px;gap:8px;">
+                      <div style="flex:1;min-width:0;">
+                        <div style="color:#c8a96e;font-size:0.3rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:4px;">Tucumán, Argentina</div>
+                        <div style="color:#fff;font-size:0.9rem;font-weight:800;line-height:1.1;margin-bottom:4px;">Donde el confort<br/>es protagonista.</div>
+                        <div style="color:rgba(255,255,255,0.35);font-size:0.32rem;line-height:1.5;margin-bottom:8px;max-width:90px;">Habitaciones premium y atención personalizada en Tucumán.</div>
+                        <div style="display:flex;gap:4px;">
+                          <span style="background:#c8a96e;color:#120d04;font-size:0.3rem;font-weight:700;padding:3px 7px;border-radius:1px;">Reservar</span>
+                          <span style="border:1px solid rgba(200,169,110,0.28);color:rgba(200,169,110,0.6);font-size:0.3rem;padding:3px 6px;border-radius:1px;">Ver habitaciones</span>
+                        </div>
+                      </div>
+                      <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0;">
+                        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,110,0.14);border-radius:5px;padding:5px 7px;min-width:70px;">
+                          <div style="color:rgba(200,169,110,0.45);font-size:0.28rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px;">Disponibilidad</div>
+                          <div style="color:#c8a96e;font-size:0.42rem;font-weight:700;">Check-in hoy</div>
+                          <div style="display:flex;align-items:center;gap:2px;margin-top:2px;"><div style="width:3px;height:3px;background:#4ade80;border-radius:50%;"></div><span style="color:rgba(255,255,255,0.28);font-size:0.28rem;">Hab. libres</span></div>
+                        </div>
+                        <div style="background:rgba(200,169,110,0.07);border:1px solid rgba(200,169,110,0.15);border-radius:5px;padding:5px 7px;">
+                          <div style="color:rgba(200,169,110,0.45);font-size:0.28rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1px;">Valoración</div>
+                          <div style="display:flex;align-items:baseline;gap:1px;"><span style="color:#c8a96e;font-size:0.7rem;font-weight:800;line-height:1;">9.2</span><span style="color:rgba(255,255,255,0.22);font-size:0.28rem;">/10</span></div>
+                          <div style="color:rgba(255,255,255,0.22);font-size:0.28rem;">+400 reseñas</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position:absolute;top:15%;left:28%;width:120px;height:120px;background:radial-gradient(circle,rgba(200,169,110,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+                  </div>
                 </div>
               </div>
-              <!-- Hero -->
-              <div style="position:absolute;top:32px;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 18px;gap:10px;">
-                <div style="flex:1;min-width:0;">
-                  <div style="color:#c8a96e;font-size:0.4rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:12px;height:1px;background:#c8a96e;"></span>Tucumán, Argentina</div>
-                  <div style="color:#fff;font-size:1.25rem;font-weight:800;line-height:1.08;margin-bottom:6px;">Donde el confort<br/>es protagonista.</div>
-                  <div style="color:rgba(255,255,255,0.38);font-size:0.46rem;line-height:1.55;margin-bottom:11px;max-width:130px;">Habitaciones premium y atención personalizada en el centro de Tucumán.</div>
-                  <div style="display:flex;gap:5px;">
-                    <span style="background:#c8a96e;color:#120d04;font-size:0.44rem;font-weight:700;padding:5px 11px;border-radius:2px;">Reservá tu estadía</span>
-                    <span style="border:1px solid rgba(200,169,110,0.3);color:rgba(200,169,110,0.65);font-size:0.44rem;padding:5px 9px;border-radius:2px;">Ver habitaciones</span>
+              <div class="dev-laptop-chin"></div>
+              <div class="dev-laptop-base"></div>
+            </div>
+            <!-- Phone -->
+            <div class="dev-phone">
+              <div class="dev-phone-body">
+                <div class="dev-phone-notch"></div>
+                <div class="dev-phone-screen">
+                  <!-- Mobile mockup Hotel Miami -->
+                  <div style="width:100%;height:100%;background:linear-gradient(180deg,#120d04,#2a1a08);position:relative;overflow:hidden;display:flex;flex-direction:column;">
+                    <!-- Mobile nav -->
+                    <div style="background:rgba(0,0,0,0.6);border-bottom:1px solid rgba(200,169,110,0.12);padding:5px 8px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+                      <span style="color:#c8a96e;font-size:0.38rem;font-weight:700;letter-spacing:0.12em;">HOTEL MIAMI</span>
+                      <div style="display:flex;flex-direction:column;gap:1.5px;"><div style="width:10px;height:1px;background:rgba(200,169,110,0.5);"></div><div style="width:8px;height:1px;background:rgba(200,169,110,0.5);"></div><div style="width:10px;height:1px;background:rgba(200,169,110,0.5);"></div></div>
+                    </div>
+                    <!-- Mobile hero -->
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:8px 10px;">
+                      <div style="color:#c8a96e;font-size:0.3rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px;">Tucumán, Argentina</div>
+                      <div style="color:#fff;font-size:0.75rem;font-weight:800;line-height:1.1;margin-bottom:5px;">Donde el<br/>confort es<br/>protagonista.</div>
+                      <div style="color:rgba(255,255,255,0.35);font-size:0.3rem;line-height:1.5;margin-bottom:8px;">Habitaciones premium en el centro de Tucumán.</div>
+                      <span style="background:#c8a96e;color:#120d04;font-size:0.32rem;font-weight:700;padding:4px 8px;border-radius:2px;display:inline-block;">Reservar estadía</span>
+                    </div>
+                    <!-- Mobile rating card -->
+                    <div style="margin:0 8px 8px;background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.15);border-radius:6px;padding:6px 8px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+                      <div><div style="color:rgba(200,169,110,0.5);font-size:0.27rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1px;">Valoración</div><div style="color:#c8a96e;font-size:0.55rem;font-weight:800;">9.2<span style="color:rgba(255,255,255,0.2);font-size:0.27rem;">/10</span></div></div>
+                      <div style="text-align:right;"><div style="color:rgba(255,255,255,0.22);font-size:0.27rem;">+400 reseñas</div><div style="display:flex;align-items:center;gap:2px;margin-top:2px;"><div style="width:3px;height:3px;background:#4ade80;border-radius:50%;"></div><span style="color:rgba(255,255,255,0.22);font-size:0.27rem;">Disponible hoy</span></div></div>
+                    </div>
+                    <div style="position:absolute;top:25%;left:20%;width:80px;height:80px;background:radial-gradient(circle,rgba(200,169,110,0.1) 0%,transparent 70%);pointer-events:none;"></div>
                   </div>
                 </div>
-                <!-- Side cards -->
-                <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0;">
-                  <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,110,0.14);border-radius:7px;padding:7px 10px;min-width:95px;">
-                    <div style="color:rgba(200,169,110,0.45);font-size:0.38rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">Disponibilidad</div>
-                    <div style="color:#c8a96e;font-size:0.6rem;font-weight:700;">Check-in hoy</div>
-                    <div style="display:flex;align-items:center;gap:3px;margin-top:3px;"><div style="width:4px;height:4px;background:#4ade80;border-radius:50%;"></div><span style="color:rgba(255,255,255,0.3);font-size:0.38rem;">Habitaciones libres</span></div>
-                  </div>
-                  <div style="background:rgba(200,169,110,0.07);border:1px solid rgba(200,169,110,0.16);border-radius:7px;padding:7px 10px;">
-                    <div style="color:rgba(200,169,110,0.45);font-size:0.38rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;">Valoración</div>
-                    <div style="display:flex;align-items:baseline;gap:2px;"><span style="color:#c8a96e;font-size:0.95rem;font-weight:800;line-height:1;">9.2</span><span style="color:rgba(255,255,255,0.25);font-size:0.38rem;">/10</span></div>
-                    <div style="color:rgba(255,255,255,0.25);font-size:0.38rem;margin-top:1px;">+400 reseñas</div>
-                  </div>
-                </div>
+                <div class="dev-phone-home"></div>
               </div>
-              <div style="position:absolute;top:15%;left:30%;width:160px;height:160px;background:radial-gradient(circle,rgba(200,169,110,0.09) 0%,transparent 70%);pointer-events:none;"></div>
             </div>
           </div>
+          <!-- Info -->
           <div class="project-info">
             <div class="project-meta">
               <span class="project-industry" style="color:#c8a96e;">Hotelería & Turismo</span>
@@ -1671,53 +1775,94 @@
 
         <!-- ── Café Aruba ── -->
         <div class="project-card reveal delay-2">
-          <div class="browser-bar">
-            <div class="browser-dots"><span></span><span></span><span></span></div>
-            <div class="browser-url">cafe-aruba.com</div>
-          </div>
-          <div class="browser-screen">
-            <div style="width:100%;height:100%;background:linear-gradient(150deg,#140a03 0%,#2c1508 60%,#140a03 100%);position:relative;overflow:hidden;">
-              <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(210,128,64,0.13) 0%,transparent 55%);"></div>
-              <!-- Navbar -->
-              <div style="position:absolute;top:0;left:0;right:0;height:32px;background:rgba(0,0,0,0.55);border-bottom:1px solid rgba(210,128,64,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 14px;z-index:3;">
-                <div style="display:flex;align-items:center;gap:6px;">
-                  <div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#d28040,#b86830);display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:0.44rem;font-weight:800;">A</span></div>
-                  <span style="color:#d28040;font-size:0.58rem;font-weight:700;letter-spacing:0.13em;">CAFÉ ARUBA</span>
-                </div>
-                <div style="display:flex;gap:10px;align-items:center;">
-                  <span style="color:rgba(210,128,64,0.45);font-size:0.44rem;letter-spacing:0.1em;">MENÚ</span>
-                  <span style="color:rgba(210,128,64,0.45);font-size:0.44rem;letter-spacing:0.1em;">GALERÍA</span>
-                  <span style="background:#d28040;color:#140a03;font-size:0.42rem;font-weight:700;padding:3px 8px;border-radius:50px;letter-spacing:0.06em;">PEDIDOS</span>
+          <!-- Device showcase: laptop + phone -->
+          <div class="device-showcase" style="background:linear-gradient(160deg,#0d0703 0%,#1c1005 60%,#0d0703 100%);">
+            <!-- Glow -->
+            <div style="position:absolute;top:20%;left:20%;width:200px;height:200px;background:radial-gradient(circle,rgba(210,128,64,0.13) 0%,transparent 70%);pointer-events:none;"></div>
+            <!-- Laptop -->
+            <div class="dev-laptop">
+              <div class="dev-laptop-lid">
+                <div class="dev-laptop-screen">
+                  <!-- Desktop mockup Café Aruba -->
+                  <div style="width:100%;height:100%;background:linear-gradient(150deg,#140a03,#2c1508);position:relative;overflow:hidden;">
+                    <!-- Navbar -->
+                    <div style="position:absolute;top:0;left:0;right:0;height:22px;background:rgba(0,0,0,0.6);border-bottom:1px solid rgba(210,128,64,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 10px;z-index:3;">
+                      <div style="display:flex;align-items:center;gap:4px;">
+                        <div style="width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#d28040,#b86830);display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:0.3rem;font-weight:800;">A</span></div>
+                        <span style="color:#d28040;font-size:0.45rem;font-weight:700;letter-spacing:0.12em;">CAFÉ ARUBA</span>
+                      </div>
+                      <div style="display:flex;gap:7px;align-items:center;">
+                        <span style="color:rgba(210,128,64,0.4);font-size:0.35rem;letter-spacing:0.08em;">MENÚ</span>
+                        <span style="color:rgba(210,128,64,0.4);font-size:0.35rem;letter-spacing:0.08em;">GALERÍA</span>
+                        <span style="background:#d28040;color:#140a03;font-size:0.3rem;font-weight:700;padding:2px 6px;border-radius:50px;">PEDIDOS</span>
+                      </div>
+                    </div>
+                    <!-- Hero desktop -->
+                    <div style="position:absolute;top:22px;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 12px;gap:8px;">
+                      <div style="flex:1;min-width:0;">
+                        <div style="color:#d28040;font-size:0.3rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:4px;">Especialidad en café</div>
+                        <div style="color:#fff;font-size:0.9rem;font-weight:800;line-height:1.1;margin-bottom:4px;">Un café<br/>diferente.</div>
+                        <div style="color:rgba(255,255,255,0.35);font-size:0.32rem;line-height:1.5;margin-bottom:8px;max-width:90px;">Granos seleccionados y el menú que hace volver a todos.</div>
+                        <div style="display:flex;gap:4px;">
+                          <span style="background:#d28040;color:#140a03;font-size:0.3rem;font-weight:700;padding:3px 7px;border-radius:50px;">Ver menú</span>
+                          <span style="border:1px solid rgba(210,128,64,0.26);color:rgba(210,128,64,0.6);font-size:0.3rem;padding:3px 6px;border-radius:50px;">Reservar</span>
+                        </div>
+                      </div>
+                      <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0;">
+                        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(210,128,64,0.12);border-radius:5px;padding:5px 7px;min-width:70px;">
+                          <div style="color:rgba(210,128,64,0.45);font-size:0.28rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2px;">Destacado hoy</div>
+                          <div style="color:#fff;font-size:0.38rem;font-weight:700;line-height:1.3;">Flat White<br/>+ Medialunas</div>
+                          <div style="color:#d28040;font-size:0.32rem;font-weight:700;margin-top:2px;">$2.800</div>
+                        </div>
+                        <div style="background:rgba(210,128,64,0.07);border:1px solid rgba(210,128,64,0.14);border-radius:5px;padding:5px 7px;">
+                          <div style="color:rgba(210,128,64,0.45);font-size:0.28rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1px;">Reseñas</div>
+                          <div style="color:#d28040;font-size:0.42rem;">★★★★★</div>
+                          <div style="color:rgba(255,255,255,0.22);font-size:0.28rem;">+280 opiniones</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position:absolute;top:15%;left:28%;width:120px;height:120px;background:radial-gradient(circle,rgba(210,128,64,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+                  </div>
                 </div>
               </div>
-              <!-- Hero -->
-              <div style="position:absolute;top:32px;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 18px;gap:10px;">
-                <div style="flex:1;min-width:0;">
-                  <div style="color:#d28040;font-size:0.4rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:12px;height:1px;background:#d28040;"></span>Especialidad en café</div>
-                  <div style="color:#fff;font-size:1.25rem;font-weight:800;line-height:1.08;margin-bottom:6px;">Un café<br/>diferente.</div>
-                  <div style="color:rgba(255,255,255,0.38);font-size:0.46rem;line-height:1.55;margin-bottom:11px;max-width:130px;">Granos seleccionados y el menú gastronómico que hace volver a todos.</div>
-                  <div style="display:flex;gap:5px;">
-                    <span style="background:#d28040;color:#140a03;font-size:0.44rem;font-weight:700;padding:5px 11px;border-radius:50px;">Ver menú</span>
-                    <span style="border:1px solid rgba(210,128,64,0.28);color:rgba(210,128,64,0.65);font-size:0.44rem;padding:5px 9px;border-radius:50px;">Reservar mesa</span>
+              <div class="dev-laptop-chin"></div>
+              <div class="dev-laptop-base"></div>
+            </div>
+            <!-- Phone -->
+            <div class="dev-phone">
+              <div class="dev-phone-body">
+                <div class="dev-phone-notch"></div>
+                <div class="dev-phone-screen">
+                  <!-- Mobile mockup Café Aruba -->
+                  <div style="width:100%;height:100%;background:linear-gradient(180deg,#140a03,#2c1508);position:relative;overflow:hidden;display:flex;flex-direction:column;">
+                    <!-- Mobile nav -->
+                    <div style="background:rgba(0,0,0,0.65);border-bottom:1px solid rgba(210,128,64,0.1);padding:5px 8px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+                      <div style="display:flex;align-items:center;gap:4px;">
+                        <div style="width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#d28040,#b86830);display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:0.28rem;font-weight:800;">A</span></div>
+                        <span style="color:#d28040;font-size:0.38rem;font-weight:700;letter-spacing:0.1em;">CAFÉ ARUBA</span>
+                      </div>
+                      <div style="display:flex;flex-direction:column;gap:1.5px;"><div style="width:10px;height:1px;background:rgba(210,128,64,0.45);"></div><div style="width:8px;height:1px;background:rgba(210,128,64,0.45);"></div><div style="width:10px;height:1px;background:rgba(210,128,64,0.45);"></div></div>
+                    </div>
+                    <!-- Mobile hero -->
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:8px 10px;">
+                      <div style="color:#d28040;font-size:0.3rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px;">Especialidad en café</div>
+                      <div style="color:#fff;font-size:0.75rem;font-weight:800;line-height:1.1;margin-bottom:5px;">Un café<br/>diferente.</div>
+                      <div style="color:rgba(255,255,255,0.35);font-size:0.3rem;line-height:1.5;margin-bottom:8px;">Granos seleccionados y menú gastronómico.</div>
+                      <span style="background:#d28040;color:#140a03;font-size:0.32rem;font-weight:700;padding:4px 8px;border-radius:50px;display:inline-block;">Ver menú</span>
+                    </div>
+                    <!-- Mobile promo card -->
+                    <div style="margin:0 8px 8px;background:rgba(210,128,64,0.08);border:1px solid rgba(210,128,64,0.15);border-radius:6px;padding:6px 8px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+                      <div><div style="color:rgba(210,128,64,0.5);font-size:0.27rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1px;">Destacado hoy</div><div style="color:#fff;font-size:0.38rem;font-weight:700;line-height:1.2;">Flat White<br/>+ Medialunas</div></div>
+                      <div style="text-align:right;"><div style="color:#d28040;font-size:0.45rem;font-weight:700;">$2.800</div><div style="color:#d28040;font-size:0.32rem;margin-top:1px;">★★★★★</div></div>
+                    </div>
+                    <div style="position:absolute;top:25%;left:20%;width:80px;height:80px;background:radial-gradient(circle,rgba(210,128,64,0.1) 0%,transparent 70%);pointer-events:none;"></div>
                   </div>
                 </div>
-                <!-- Side cards -->
-                <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0;">
-                  <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(210,128,64,0.12);border-radius:7px;padding:7px 10px;min-width:95px;">
-                    <div style="color:rgba(210,128,64,0.45);font-size:0.38rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">Destacado hoy</div>
-                    <div style="color:#fff;font-size:0.58rem;font-weight:700;line-height:1.3;">Flat White<br/>+ Medialunas</div>
-                    <div style="color:#d28040;font-size:0.5rem;font-weight:700;margin-top:3px;">$2.800</div>
-                  </div>
-                  <div style="background:rgba(210,128,64,0.07);border:1px solid rgba(210,128,64,0.15);border-radius:7px;padding:7px 10px;">
-                    <div style="color:rgba(210,128,64,0.45);font-size:0.38rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;">Reseñas</div>
-                    <div style="color:#d28040;font-size:0.58rem;">★★★★★</div>
-                    <div style="color:rgba(255,255,255,0.25);font-size:0.38rem;margin-top:1px;">+280 opiniones</div>
-                  </div>
-                </div>
+                <div class="dev-phone-home"></div>
               </div>
-              <div style="position:absolute;top:15%;left:30%;width:160px;height:160px;background:radial-gradient(circle,rgba(210,128,64,0.1) 0%,transparent 70%);pointer-events:none;"></div>
             </div>
           </div>
+          <!-- Info -->
           <div class="project-info">
             <div class="project-meta">
               <span class="project-industry" style="color:#d28040;">Gastronomía & Café</span>
