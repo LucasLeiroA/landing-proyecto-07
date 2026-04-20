@@ -43,25 +43,49 @@
       --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
     }
 
+    /* ===== CUSTOM CURSOR ===== */
+    @media (pointer: fine) { body { cursor: none; } }
+    .cursor-dot {
+      position: fixed; width: 7px; height: 7px;
+      background: var(--green); border-radius: 50%;
+      pointer-events: none; z-index: 99999;
+      transform: translate(-50%,-50%);
+      transition: width 0.15s, height 0.15s, opacity 0.15s;
+      display: none;
+    }
+    .cursor-ring {
+      position: fixed; width: 30px; height: 30px;
+      border: 1.5px solid rgba(90,158,114,0.45); border-radius: 50%;
+      pointer-events: none; z-index: 99998;
+      transform: translate(-50%,-50%);
+      transition: width 0.3s cubic-bezier(0.4,0,0.2,1), height 0.3s cubic-bezier(0.4,0,0.2,1), border-color 0.2s;
+      display: none;
+    }
+    .cursor-dot.grow { width: 12px; height: 12px; }
+    .cursor-ring.grow { width: 46px; height: 46px; border-color: rgba(90,158,114,0.25); }
+    @media (pointer: fine) { .cursor-dot, .cursor-ring { display: block; } }
+
     /* ===== SCROLL ANIMATIONS ===== */
     .reveal {
       opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+      transform: translateY(38px);
+      filter: blur(5px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1), filter 0.7s cubic-bezier(0.4,0,0.2,1);
     }
-    .reveal.from-left { transform: translateX(-50px); }
-    .reveal.from-right { transform: translateX(50px); }
-    .reveal.from-scale { transform: scale(0.9) translateY(20px); opacity: 0; }
+    .reveal.from-left { transform: translateX(-38px); filter: blur(5px); }
+    .reveal.from-right { transform: translateX(38px); filter: blur(5px); }
+    .reveal.from-scale { transform: scale(0.92) translateY(16px); filter: blur(5px); }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0) translateX(0) scale(1);
+      filter: blur(0);
     }
-    .reveal.delay-1 { transition-delay: 0.1s; }
-    .reveal.delay-2 { transition-delay: 0.2s; }
-    .reveal.delay-3 { transition-delay: 0.3s; }
-    .reveal.delay-4 { transition-delay: 0.4s; }
-    .reveal.delay-5 { transition-delay: 0.5s; }
-    .reveal.delay-6 { transition-delay: 0.6s; }
+    .reveal.delay-1 { transition-delay: 0.08s; }
+    .reveal.delay-2 { transition-delay: 0.16s; }
+    .reveal.delay-3 { transition-delay: 0.24s; }
+    .reveal.delay-4 { transition-delay: 0.32s; }
+    .reveal.delay-5 { transition-delay: 0.40s; }
+    .reveal.delay-6 { transition-delay: 0.48s; }
 
     /* ===== NAVBAR ===== */
     .navbar {
@@ -514,36 +538,52 @@
     .proceso-steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: 1.25rem;
       position: relative;
     }
     .proceso-steps::before {
       content: '';
       position: absolute;
-      top: 28px;
-      left: 10%;
-      right: 10%;
+      top: 30px;
+      left: 12.5%;
+      right: 12.5%;
       height: 1px;
-      background: var(--green-light);
+      background: linear-gradient(90deg, transparent, var(--green-light) 15%, var(--green-light) 85%, transparent);
       z-index: 0;
     }
     .step-card {
       background: var(--mint);
       border-radius: var(--radius);
-      padding: 2rem 1.5rem;
+      padding: 2.25rem 1.5rem 1.75rem;
       text-align: center;
       position: relative;
       z-index: 1;
       border: 1px solid transparent;
       transition: all var(--transition);
+      overflow: hidden;
+    }
+    .step-card::after {
+      content: attr(data-num);
+      position: absolute;
+      bottom: -0.8rem;
+      right: -0.3rem;
+      font-size: 5.5rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      color: rgba(90,158,114,0.06);
+      pointer-events: none;
+      transition: color var(--transition);
     }
     .step-card:hover {
       border-color: var(--green-light);
-      box-shadow: var(--shadow);
-      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-8px);
+      background: #ffffff;
     }
+    .step-card:hover::after { color: rgba(90,158,114,0.1); }
     .step-number {
-      width: 44px; height: 44px;
+      width: 48px; height: 48px;
       background: var(--white);
       border: 2px solid var(--green-light);
       border-radius: 50%;
@@ -551,26 +591,29 @@
       align-items: center;
       justify-content: center;
       font-size: 0.75rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--green);
-      margin: 0 auto 1.25rem;
+      margin: 0 auto 1.4rem;
       transition: all var(--transition);
+      box-shadow: 0 4px 12px rgba(90,158,114,0.1);
     }
     .step-card:hover .step-number {
       background: var(--green);
       border-color: var(--green);
       color: var(--white);
+      box-shadow: 0 8px 24px rgba(90,158,114,0.35);
+      transform: scale(1.1);
     }
     .step-card h3 {
       font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.55rem;
       color: var(--dark);
     }
     .step-card p {
       font-size: 0.82rem;
       color: var(--mid);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* ===== PROYECTOS ===== */
@@ -922,20 +965,36 @@
       padding: 2.5rem;
       border: 1px solid var(--mint-dark);
       transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem; right: 1.5rem;
+      font-size: 6rem;
+      font-family: Georgia, serif;
+      color: rgba(90,158,114,0.07);
+      line-height: 1;
+      pointer-events: none;
     }
     .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--green-light);
     }
-    .testimonial-quote {
-      font-size: 2rem;
-      color: var(--green-light);
-      line-height: 1;
-      margin-bottom: 1rem;
-      font-family: Georgia, serif;
+    .testimonial-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 0.9rem;
     }
+    .testimonial-stars span {
+      color: #f59e0b;
+      font-size: 0.8rem;
+    }
+    .testimonial-quote { display: none; }
     .testimonial-text {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--dark);
       line-height: 1.75;
       margin-bottom: 1.75rem;
@@ -947,16 +1006,17 @@
       gap: 0.75rem;
     }
     .author-avatar {
-      width: 40px; height: 40px;
+      width: 42px; height: 42px;
       border-radius: 50%;
-      background: var(--green-soft);
+      background: linear-gradient(135deg, var(--green), #3d7a58);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      color: var(--green);
+      color: #ffffff;
       flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(90,158,114,0.25);
     }
     .author-name {
       font-size: 0.9rem;
@@ -1413,9 +1473,165 @@
       .hero-actions { flex-direction: column; }
       .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
     }
+
+    /* ===== POR QUÉ NOSOTROS ===== */
+    #porque { background: var(--dark); }
+    #porque .section-tag { color: var(--green); border-color: rgba(90,158,114,0.25); background: rgba(90,158,114,0.08); }
+    #porque .section-title { color: #fff; }
+    #porque .section-title strong { color: var(--green); }
+    .porque-header { text-align: center; margin-bottom: 3.5rem; }
+    .porque-header .section-subtitle { margin: 0 auto; color: rgba(255,255,255,0.45); }
+    .porque-table {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .porque-col {
+      padding: 0;
+    }
+    .porque-col-head {
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .porque-col--ours .porque-col-head {
+      background: var(--green);
+      color: #fff;
+    }
+    .porque-col--them .porque-col-head {
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.4);
+    }
+    .porque-col-head-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    .porque-col--ours .porque-col-head-icon { background: rgba(255,255,255,0.2); }
+    .porque-col--them .porque-col-head-icon { background: rgba(255,255,255,0.06); }
+    .porque-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.87rem;
+      transition: background 0.2s;
+    }
+    .porque-row:last-child { border-bottom: none; }
+    .porque-col--ours .porque-row {
+      color: rgba(255,255,255,0.82);
+      background: rgba(90,158,114,0.04);
+    }
+    .porque-col--ours .porque-row:hover { background: rgba(90,158,114,0.09); }
+    .porque-col--them .porque-row {
+      color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.02);
+    }
+    .porque-col--them .porque-row:hover { background: rgba(255,255,255,0.04); }
+    .porque-icon-check {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(90,158,114,0.15);
+      color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 700; flex-shrink: 0;
+    }
+    .porque-icon-x {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ===== FAQ ===== */
+    #faq { background: var(--white); }
+    .faq-header { text-align: center; margin-bottom: 3.5rem; }
+    .faq-header .section-subtitle { margin: 0 auto; }
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--mint-dark);
+    }
+    .faq-item { border-bottom: 1px solid var(--mint-dark); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.35rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      font-family: inherit;
+    }
+    .faq-question:hover { background: var(--mint); color: var(--dark); }
+    .faq-item.open .faq-question { color: var(--green); background: var(--green-soft); }
+    .faq-icon {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--green-light);
+      color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; line-height: 1;
+      flex-shrink: 0;
+      transition: transform var(--transition), background var(--transition), border-color var(--transition);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer p {
+      padding: 0 1.75rem 1.4rem;
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+    .faq-answer p strong { color: var(--dark); }
+
+    @media (max-width: 768px) {
+      .porque-table { grid-template-columns: 1fr; }
+      .porque-col--them { border-top: 1px solid rgba(255,255,255,0.07); }
+      .porque-row { padding: 0.85rem 1.25rem; }
+      .porque-col-head { padding: 1.1rem 1.25rem; }
+      .faq-question { padding: 1.1rem 1.25rem; font-size: 0.88rem; }
+      .faq-answer p { padding: 0 1.25rem 1.1rem; }
+    }
   </style>
 </head>
 <body>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="navbar">
@@ -1632,25 +1848,66 @@
         </div>
       </div>
       <div class="proceso-steps">
-        <div class="step-card reveal delay-1">
+        <div class="step-card reveal delay-1" data-num="01">
           <div class="step-number">01</div>
           <h3>Brief</h3>
           <p>Entendemos tu negocio, objetivos y cliente ideal. Definimos la estrategia juntos.</p>
         </div>
-        <div class="step-card reveal delay-2">
+        <div class="step-card reveal delay-2" data-num="02">
           <div class="step-number">02</div>
           <h3>Diseño</h3>
           <p>Creamos una propuesta visual a medida, alineada a tu marca y pensada para convertir.</p>
         </div>
-        <div class="step-card reveal delay-3">
+        <div class="step-card reveal delay-3" data-num="03">
           <div class="step-number">03</div>
           <h3>Desarrollo</h3>
           <p>Convertimos el diseño en una web rápida, profesional y 100% funcional.</p>
         </div>
-        <div class="step-card reveal delay-4">
+        <div class="step-card reveal delay-4" data-num="04">
           <div class="step-number">04</div>
           <h3>Launch</h3>
           <p>Publicamos tu web y la ajustamos para que dé resultados desde el primer día.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== POR QUÉ NOSOTROS ===== -->
+  <section id="porque">
+    <div class="section-inner">
+      <div class="porque-header reveal">
+        <div class="section-tag" style="justify-content:center;">Por qué nosotros</div>
+        <h2 class="section-title" style="color:#fff;">Diseño que<br><strong>marca la diferencia.</strong></h2>
+        <p class="section-subtitle porque-header" style="color:rgba(255,255,255,0.45);max-width:460px;margin:0 auto;">No es lo mismo una web a medida que una plantilla cualquiera. Acá te mostramos por qué importa.</p>
+      </div>
+      <div class="porque-table reveal delay-2">
+        <!-- Columna izquierda: proyecto.07 -->
+        <div class="porque-col porque-col--ours">
+          <div class="porque-col-head">
+            <div class="porque-col-head-icon">✦</div>
+            proyecto.07
+          </div>
+          <div class="porque-row"><div class="porque-icon-check">✓</div>Diseño único, nadie tiene el mismo sitio</div>
+          <div class="porque-row"><div class="porque-icon-check">✓</div>SEO técnico configurado desde el día uno</div>
+          <div class="porque-row"><div class="porque-icon-check">✓</div>Velocidad y rendimiento optimizados</div>
+          <div class="porque-row"><div class="porque-icon-check">✓</div>100% adaptado a tu marca e identidad</div>
+          <div class="porque-row"><div class="porque-icon-check">✓</div>Estrategia de conversión incluida</div>
+          <div class="porque-row"><div class="porque-icon-check">✓</div>Soporte postventa real</div>
+          <div class="porque-row"><div class="porque-icon-check">✓</div>Precio claro y sin sorpresas</div>
+        </div>
+        <!-- Columna derecha: plantillas genéricas -->
+        <div class="porque-col porque-col--them">
+          <div class="porque-col-head">
+            <div class="porque-col-head-icon">◻</div>
+            Plantilla genérica
+          </div>
+          <div class="porque-row"><div class="porque-icon-x">✕</div>Miles de sitios idénticos en internet</div>
+          <div class="porque-row"><div class="porque-icon-x">✕</div>SEO ignorado o mal configurado</div>
+          <div class="porque-row"><div class="porque-icon-x">✕</div>Código pesado, carga lenta</div>
+          <div class="porque-row"><div class="porque-icon-x">✕</div>Aspecto genérico sin personalidad</div>
+          <div class="porque-row"><div class="porque-icon-x">✕</div>Sin estrategia, solo apariencia</div>
+          <div class="porque-row"><div class="porque-icon-x">✕</div>Soporte inexistente o pagado extra</div>
+          <div class="porque-row"><div class="porque-icon-x">✕</div>Costos ocultos y suscripciones</div>
         </div>
       </div>
     </div>
@@ -1847,7 +2104,7 @@
       </div>
       <div class="testimonios-grid">
         <div class="testimonial-card reveal delay-1">
-          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="testimonial-text">Entendieron perfecto lo que necesitábamos y lo llevaron a otro nivel. La web nos trajo clientes desde el primer mes.</p>
           <div class="testimonial-author">
             <div class="author-avatar">MR</div>
@@ -1858,7 +2115,7 @@
           </div>
         </div>
         <div class="testimonial-card reveal delay-2">
-          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
           <p class="testimonial-text">Profesionales, claros y dedicados. El proceso fue simple y el resultado superó nuestras expectativas.</p>
           <div class="testimonial-author">
             <div class="author-avatar">SL</div>
@@ -1883,6 +2140,43 @@
             <div class="showcase-number" data-count="100" data-suffix="%">0%</div>
             <div class="showcase-label">Compromiso y dedicación</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="section-inner">
+      <div class="faq-header reveal">
+        <div class="section-tag" style="justify-content:center;">Preguntas frecuentes</div>
+        <h2 class="section-title" style="text-align:center;">Todo lo que<br><strong>necesitás saber.</strong></h2>
+        <p class="section-subtitle" style="text-align:center;max-width:460px;margin:0 auto;">Las dudas más comunes antes de empezar un proyecto. Si no encontrás tu pregunta, escribinos.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal delay-1">
+          <button class="faq-question">¿Cuánto tarda en estar lista mi web?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>El plazo varía según el plan elegido. Un <strong>plan Starter</strong> puede estar listo en 5-7 días hábiles. El <strong>plan Pro</strong> entre 7-10 días. Un sitio completo <strong>Business</strong> toma entre 10-15 días. Todo depende también de la velocidad con que nos entregues el contenido.</p></div>
+        </div>
+        <div class="faq-item reveal delay-2">
+          <button class="faq-question">¿Qué incluye el precio? ¿Hay costos extras?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>El precio incluye el diseño, el desarrollo y la publicación. El <strong>dominio</strong> (.com.ar, .com, etc.) y el <strong>hosting</strong> del primer año tienen un costo adicional muy bajo (generalmente menos de USD 15/año). Te informamos todo desde el primer momento, sin sorpresas.</p></div>
+        </div>
+        <div class="faq-item reveal delay-3">
+          <button class="faq-question">¿Necesito tener el contenido listo para empezar?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>No necesariamente. Te ayudamos a definir qué textos e imágenes usar. Si ya tenés contenido, mejor. Si no, trabajamos juntos para conseguirlo o te recomendamos cómo generarlo. Lo importante es arrancar.</p></div>
+        </div>
+        <div class="faq-item reveal delay-4">
+          <button class="faq-question">¿Puedo pedir cambios después de que entreguen la web?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Sí. Incluimos <strong>rondas de revisión</strong> durante el proceso para que el resultado sea exactamente lo que esperabas. Después de la entrega, ofrecemos soporte postventa y podemos gestionar cambios según tus necesidades.</p></div>
+        </div>
+        <div class="faq-item reveal delay-5">
+          <button class="faq-question">¿Usan plantillas o diseñan desde cero?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p><strong>Diseñamos desde cero, siempre.</strong> Cada proyecto es único. No usamos constructores de páginas ni plantillas prediseñadas. Esto garantiza un sitio más rápido, mejor posicionado en Google y con una identidad visual que nadie más tiene.</p></div>
+        </div>
+        <div class="faq-item reveal delay-6">
+          <button class="faq-question">¿Mi web va a aparecer en Google?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Todos nuestros sitios se construyen con <strong>SEO técnico</strong> desde la base: código limpio, velocidad de carga, etiquetas correctas y estructura semántica. Esto le da a tu web las mejores condiciones para posicionarse. El SEO de contenido y campañas publicitarias son servicios adicionales que también ofrecemos.</p></div>
         </div>
       </div>
     </div>
@@ -2182,6 +2476,43 @@
         const options = ['starter', 'pro', 'business'];
         document.getElementById('servicio').value = options[i] || '';
         document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // ── Custom cursor ──
+    const cursorDot  = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+    if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+      let rx = 0, ry = 0;
+      document.addEventListener('mousemove', e => {
+        const { clientX: x, clientY: y } = e;
+        cursorDot.style.left  = x + 'px';
+        cursorDot.style.top   = y + 'px';
+        rx += (x - rx) * 0.14;
+        ry += (y - ry) * 0.14;
+        cursorRing.style.left = rx + 'px';
+        cursorRing.style.top  = ry + 'px';
+      });
+      requestAnimationFrame(function loop() {
+        cursorRing.style.left = (parseFloat(cursorRing.style.left)||0) + ((parseFloat(cursorDot.style.left)||0) - (parseFloat(cursorRing.style.left)||0)) * 0.14 + 'px';
+        cursorRing.style.top  = (parseFloat(cursorRing.style.top)||0)  + ((parseFloat(cursorDot.style.top)||0)  - (parseFloat(cursorRing.style.top)||0))  * 0.14 + 'px';
+        requestAnimationFrame(loop);
+      });
+      document.querySelectorAll('a, button, [role="button"], .project-card, .step-card, .plan-card, .faq-question').forEach(el => {
+        el.addEventListener('mouseenter', () => { cursorDot.classList.add('grow'); cursorRing.classList.add('grow'); });
+        el.addEventListener('mouseleave', () => { cursorDot.classList.remove('grow'); cursorRing.classList.remove('grow'); });
+      });
+      document.addEventListener('mouseleave', () => { cursorDot.style.opacity = '0'; cursorRing.style.opacity = '0'; });
+      document.addEventListener('mouseenter', () => { cursorDot.style.opacity = '1'; cursorRing.style.opacity = '1'; });
+    }
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
       });
     });
   </script>
