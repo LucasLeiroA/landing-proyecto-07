@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: #eef2ee; font-family: Arial, Helvetica, sans-serif; padding: 32px 16px; }
+    .wrapper { max-width: 580px; margin: 0 auto; }
+    .card { background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(44,51,48,0.10); }
+
+    /* Header */
+    .header { background: #2c3330; padding: 28px 32px; }
+    .logo { font-size: 20px; font-weight: 500; letter-spacing: 0.14em; color: #ffffff; }
+    .logo span { color: #5a9e72; font-weight: 700; }
+    .header-sub { color: rgba(255,255,255,0.45); font-size: 12px; margin-top: 6px; letter-spacing: 0.06em; }
+
+    /* Body */
+    .body { padding: 32px; }
+    .intro { font-size: 14px; color: #5a6660; line-height: 1.65; margin-bottom: 28px; }
+    .intro a { color: #5a9e72; text-decoration: none; }
+
+    /* Fields */
+    .field { margin-bottom: 12px; border-radius: 10px; overflow: hidden; border: 1px solid #dce8de; }
+    .field-label {
+      background: #eef2ee;
+      padding: 8px 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5a9e72;
+      border-bottom: 1px solid #dce8de;
+    }
+    .field-value {
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #2c3330;
+      line-height: 1.55;
+      background: #ffffff;
+    }
+    .field-value a { color: #5a9e72; text-decoration: none; }
+    .field-value.mensaje { white-space: pre-wrap; color: #3d4a44; font-style: italic; }
+
+    /* Divider */
+    .divider { height: 1px; background: #eef2ee; margin: 24px 0; }
+
+    /* WhatsApp button */
+    .wsp-section { text-align: center; padding: 4px 0 8px; }
+    .wsp-label { font-size: 12px; color: #8a9a92; margin-bottom: 12px; letter-spacing: 0.04em; }
+    .wsp-btn {
+      display: inline-block;
+      background: #25D366;
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    /* Footer */
+    .footer {
+      background: #f5f8f5;
+      padding: 18px 32px;
+      text-align: center;
+      font-size: 11px;
+      color: #8a9a92;
+      border-top: 1px solid #dce8de;
+      line-height: 1.6;
+    }
+    .footer strong { color: #5a6660; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card">
+
+      <!-- HEADER -->
+      <div class="header">
+        <div class="logo">proyecto<span>.07</span></div>
+        <div class="header-sub">Nueva consulta desde tu sitio web</div>
+      </div>
+
+      <!-- BODY -->
+      <div class="body">
+        <p class="intro">
+          Recibiste un mensaje de contacto desde
+          <a href="https://proyecto-07.pages.dev">proyecto-07.pages.dev</a>.
+          Estos son los datos del cliente:
+        </p>
+
+        <div class="field">
+          <div class="field-label">Nombre</div>
+          <div class="field-value">{{nombre}}</div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">Email</div>
+          <div class="field-value"><a href="mailto:{{email}}">{{email}}</a></div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">Telefono / WhatsApp</div>
+          <div class="field-value">{{telefono}}</div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">Servicio de interes</div>
+          <div class="field-value">{{servicio}}</div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">Mensaje</div>
+          <div class="field-value mensaje">{{mensaje}}</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="wsp-section">
+          <p class="wsp-label">Responder directamente por WhatsApp</p>
+          <a href="{{wsp_link}}" class="wsp-btn">Abrir WhatsApp con {{nombre}} &rarr;</a>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <strong>proyecto.07</strong> &mdash; Diseño web a medida<br />
+        lucasleirotec@gmail.com
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
