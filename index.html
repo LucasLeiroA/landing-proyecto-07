@@ -574,7 +574,7 @@
     }
 
     /* ===== PROYECTOS ===== */
-    #proyectos { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    #proyectos { background: var(--dark); }
     #proyectos .section-tag { color: var(--green); border-color: rgba(90,158,114,0.25); background: rgba(90,158,114,0.08); }
     #proyectos .section-title { color: #ffffff; }
     #proyectos .section-title strong { color: var(--green); }
@@ -582,41 +582,34 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
     }
     .projects-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 5rem;
-    }
-    /* Each project row alternates direction */
-    .project-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
     }
-    .project-row.reverse { direction: rtl; }
-    .project-row.reverse > * { direction: ltr; }
-
-    /* Browser mockup frame */
-    .project-browser {
-      border-radius: 12px;
+    .project-card {
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.07);
-      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s;
+      background: #1a2020;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s;
+      cursor: pointer;
     }
-    .project-row:hover .project-browser {
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 48px 100px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.1);
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
     }
+
+    /* Browser mockup */
     .browser-bar {
-      background: #1e2429;
-      padding: 10px 14px;
+      background: #141a1a;
+      padding: 9px 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      gap: 9px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .browser-dots {
       display: flex;
@@ -624,7 +617,7 @@
       flex-shrink: 0;
     }
     .browser-dots span {
-      width: 9px; height: 9px;
+      width: 8px; height: 8px;
       border-radius: 50%;
     }
     .browser-dots span:nth-child(1) { background: #ff5f57; }
@@ -632,11 +625,11 @@
     .browser-dots span:nth-child(3) { background: #28c840; }
     .browser-url {
       flex: 1;
-      background: rgba(255,255,255,0.06);
-      border-radius: 6px;
-      padding: 4px 10px;
-      font-size: 0.62rem;
-      color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.05);
+      border-radius: 5px;
+      padding: 3px 9px;
+      font-size: 0.58rem;
+      color: rgba(255,255,255,0.28);
       letter-spacing: 0.03em;
       white-space: nowrap;
       overflow: hidden;
@@ -644,86 +637,75 @@
     }
     .browser-screen {
       width: 100%;
-      aspect-ratio: 16/10;
+      aspect-ratio: 16/9;
       overflow: hidden;
       position: relative;
     }
 
-    /* Project info panel */
-    .project-detail {
+    /* Project info */
+    .project-info {
+      padding: 1.4rem 1.5rem 1.5rem;
+    }
+    .project-meta {
       display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.65rem;
     }
     .project-industry {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.68rem;
+      font-size: 0.62rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--green);
     }
-    .project-industry::before {
-      content: '';
-      display: inline-block;
-      width: 18px; height: 2px;
-      background: var(--green);
-      border-radius: 2px;
+    .project-num-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 0.1em;
     }
-    .project-detail h3 {
-      font-size: 2.2rem;
+    .project-info h3 {
+      font-size: 1.25rem;
       font-weight: 800;
       color: #ffffff;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
     }
-    .project-detail p {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.7;
+    .project-info p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.65;
+      margin-bottom: 1rem;
     }
     .project-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
+      margin-bottom: 1.1rem;
     }
     .project-chip {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.55);
-      font-size: 0.7rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      color: rgba(255,255,255,0.45);
+      font-size: 0.62rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: 50px;
     }
     .project-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      color: var(--green);
-      font-size: 0.82rem;
+      gap: 6px;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       text-decoration: none;
       transition: gap 0.2s;
     }
-    .project-link:hover { gap: 14px; }
-    .project-link::after {
-      content: '→';
-      font-size: 1rem;
-    }
-    .project-num {
-      font-size: 5rem;
-      font-weight: 900;
-      color: rgba(255,255,255,0.04);
-      line-height: 1;
-      letter-spacing: -0.04em;
-      margin-bottom: -0.5rem;
-    }
+    .project-link:hover { gap: 11px; }
+    .project-link::after { content: '→'; }
 
     /* ===== PLANES ===== */
     #planes { background: var(--white); }
@@ -1344,11 +1326,7 @@
       .proceso-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .proceso-steps { grid-template-columns: repeat(2, 1fr); }
       .proceso-steps::before { display: none; }
-      .project-row { grid-template-columns: 1fr; gap: 2rem; }
-      .project-row.reverse { direction: ltr; }
-      .project-detail h3 { font-size: 1.6rem; }
-      .project-num { font-size: 3rem; }
-      .projects-grid { gap: 3.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
       .projects-header { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
       .testimonios-header { grid-template-columns: 1fr; gap: 1.5rem; }
       .testimonios-grid { grid-template-columns: 1fr; }
@@ -1620,174 +1598,140 @@
           <div class="section-tag">Proyectos</div>
           <h2 class="section-title">Nuestro<br><strong>trabajo habla.</strong></h2>
         </div>
-        <a href="#contacto" class="btn-primary" style="flex-shrink:0;background:var(--green);border-color:var(--green);">Tu proyecto puede ser el próximo →</a>
+        <a href="#contacto" class="btn-primary" style="flex-shrink:0;background:var(--green);border-color:var(--green);">Sumate →</a>
       </div>
 
       <div class="projects-grid">
 
-        <!-- ── PROYECTO 01: Hotel Miami ── -->
-        <div class="project-row reveal delay-1">
-          <!-- Browser mockup -->
-          <div class="project-browser">
-            <div class="browser-bar">
-              <div class="browser-dots"><span></span><span></span><span></span></div>
-              <div class="browser-url">hotelmiamituc.com</div>
-            </div>
-            <div class="browser-screen">
-              <!-- Hotel Miami mockup -->
-              <div style="width:100%;height:100%;background:linear-gradient(160deg,#1a1209 0%,#2d1f0a 50%,#1a1209 100%);position:relative;overflow:hidden;">
-                <!-- Background image overlay -->
-                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(180,130,60,0.18) 0%,rgba(0,0,0,0) 60%);"></div>
-                <!-- Decorative pattern -->
-                <div style="position:absolute;inset:0;opacity:0.04;background-image:repeating-linear-gradient(45deg,#c8a96e 0,#c8a96e 1px,transparent 0,transparent 50%);background-size:20px 20px;"></div>
-                <!-- Navbar -->
-                <div style="position:absolute;top:0;left:0;right:0;height:38px;background:rgba(0,0,0,0.45);backdrop-filter:blur(8px);border-bottom:1px solid rgba(200,169,110,0.18);display:flex;align-items:center;justify-content:space-between;padding:0 18px;z-index:3;">
-                  <div style="display:flex;align-items:center;gap:6px;">
-                    <div style="width:18px;height:18px;border:1.5px solid #c8a96e;border-radius:3px;display:flex;align-items:center;justify-content:center;">
-                      <div style="width:8px;height:8px;background:#c8a96e;border-radius:1px;"></div>
-                    </div>
-                    <span style="color:#c8a96e;font-size:0.65rem;font-weight:700;letter-spacing:0.18em;">HOTEL MIAMI</span>
-                  </div>
-                  <div style="display:flex;gap:14px;align-items:center;">
-                    <span style="color:rgba(200,169,110,0.5);font-size:0.5rem;letter-spacing:0.1em;">HABITACIONES</span>
-                    <span style="color:rgba(200,169,110,0.5);font-size:0.5rem;letter-spacing:0.1em;">SERVICIOS</span>
-                    <span style="color:rgba(200,169,110,0.5);font-size:0.5rem;letter-spacing:0.1em;">GALERÍA</span>
-                    <span style="background:#c8a96e;color:#1a1209;font-size:0.48rem;font-weight:700;padding:4px 10px;border-radius:3px;letter-spacing:0.08em;">RESERVAR</span>
-                  </div>
+        <!-- ── Hotel Miami ── -->
+        <div class="project-card reveal delay-1">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">hotelmiamituc.com</div>
+          </div>
+          <div class="browser-screen">
+            <div style="width:100%;height:100%;background:linear-gradient(150deg,#120d04 0%,#2a1a08 60%,#120d04 100%);position:relative;overflow:hidden;">
+              <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(200,169,110,0.14) 0%,transparent 55%);"></div>
+              <!-- Navbar -->
+              <div style="position:absolute;top:0;left:0;right:0;height:32px;background:rgba(0,0,0,0.5);border-bottom:1px solid rgba(200,169,110,0.14);display:flex;align-items:center;justify-content:space-between;padding:0 14px;z-index:3;">
+                <div style="display:flex;align-items:center;gap:5px;">
+                  <div style="width:14px;height:14px;border:1.5px solid #c8a96e;border-radius:2px;display:flex;align-items:center;justify-content:center;"><div style="width:6px;height:6px;background:#c8a96e;border-radius:1px;"></div></div>
+                  <span style="color:#c8a96e;font-size:0.58rem;font-weight:700;letter-spacing:0.16em;">HOTEL MIAMI</span>
                 </div>
-                <!-- Hero content -->
-                <div style="position:absolute;top:38px;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 24px;">
-                  <div style="flex:1;z-index:2;">
-                    <div style="color:#c8a96e;font-size:0.45rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-                      <span style="display:inline-block;width:16px;height:1px;background:#c8a96e;"></span>
-                      Tucumán, Argentina
-                    </div>
-                    <div style="color:#ffffff;font-size:1.55rem;font-weight:800;line-height:1.05;margin-bottom:8px;letter-spacing:-0.02em;">Donde el confort<br/>es protagonista.</div>
-                    <div style="color:rgba(255,255,255,0.4);font-size:0.52rem;line-height:1.6;margin-bottom:14px;max-width:160px;">Habitaciones premium, atención personalizada y ubicación inmejorable en el centro de Tucumán.</div>
-                    <div style="display:flex;gap:7px;">
-                      <span style="background:#c8a96e;color:#1a1209;font-size:0.5rem;font-weight:700;padding:6px 14px;border-radius:3px;letter-spacing:0.05em;">Reservá tu estadía</span>
-                      <span style="border:1px solid rgba(200,169,110,0.35);color:rgba(200,169,110,0.7);font-size:0.5rem;font-weight:600;padding:6px 12px;border-radius:3px;">Ver habitaciones</span>
-                    </div>
-                  </div>
-                  <!-- Right: room preview cards -->
-                  <div style="display:flex;flex-direction:column;gap:7px;flex-shrink:0;">
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,110,0.15);border-radius:8px;padding:9px 12px;min-width:115px;">
-                      <div style="color:rgba(200,169,110,0.5);font-size:0.42rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Disponibilidad</div>
-                      <div style="color:#c8a96e;font-size:0.7rem;font-weight:700;">Check-in hoy</div>
-                      <div style="display:flex;align-items:center;gap:4px;margin-top:4px;">
-                        <div style="width:5px;height:5px;background:#4ade80;border-radius:50%;"></div>
-                        <span style="color:rgba(255,255,255,0.35);font-size:0.42rem;">Habitaciones libres</span>
-                      </div>
-                    </div>
-                    <div style="background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.18);border-radius:8px;padding:9px 12px;">
-                      <div style="color:rgba(200,169,110,0.5);font-size:0.42rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">Valoración</div>
-                      <div style="display:flex;align-items:baseline;gap:3px;">
-                        <span style="color:#c8a96e;font-size:1.1rem;font-weight:800;line-height:1;">9.2</span>
-                        <span style="color:rgba(255,255,255,0.3);font-size:0.42rem;">/10</span>
-                      </div>
-                      <div style="color:rgba(255,255,255,0.3);font-size:0.42rem;margin-top:1px;">+400 reseñas</div>
-                    </div>
-                  </div>
+                <div style="display:flex;gap:10px;align-items:center;">
+                  <span style="color:rgba(200,169,110,0.45);font-size:0.44rem;letter-spacing:0.1em;">HABITACIONES</span>
+                  <span style="color:rgba(200,169,110,0.45);font-size:0.44rem;letter-spacing:0.1em;">SERVICIOS</span>
+                  <span style="background:#c8a96e;color:#120d04;font-size:0.42rem;font-weight:700;padding:3px 8px;border-radius:2px;letter-spacing:0.06em;">RESERVAR</span>
                 </div>
-                <!-- Gold glow -->
-                <div style="position:absolute;top:20%;left:35%;width:200px;height:200px;background:radial-gradient(circle,rgba(200,169,110,0.1) 0%,transparent 70%);pointer-events:none;"></div>
               </div>
+              <!-- Hero -->
+              <div style="position:absolute;top:32px;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 18px;gap:10px;">
+                <div style="flex:1;min-width:0;">
+                  <div style="color:#c8a96e;font-size:0.4rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:12px;height:1px;background:#c8a96e;"></span>Tucumán, Argentina</div>
+                  <div style="color:#fff;font-size:1.25rem;font-weight:800;line-height:1.08;margin-bottom:6px;">Donde el confort<br/>es protagonista.</div>
+                  <div style="color:rgba(255,255,255,0.38);font-size:0.46rem;line-height:1.55;margin-bottom:11px;max-width:130px;">Habitaciones premium y atención personalizada en el centro de Tucumán.</div>
+                  <div style="display:flex;gap:5px;">
+                    <span style="background:#c8a96e;color:#120d04;font-size:0.44rem;font-weight:700;padding:5px 11px;border-radius:2px;">Reservá tu estadía</span>
+                    <span style="border:1px solid rgba(200,169,110,0.3);color:rgba(200,169,110,0.65);font-size:0.44rem;padding:5px 9px;border-radius:2px;">Ver habitaciones</span>
+                  </div>
+                </div>
+                <!-- Side cards -->
+                <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0;">
+                  <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,110,0.14);border-radius:7px;padding:7px 10px;min-width:95px;">
+                    <div style="color:rgba(200,169,110,0.45);font-size:0.38rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">Disponibilidad</div>
+                    <div style="color:#c8a96e;font-size:0.6rem;font-weight:700;">Check-in hoy</div>
+                    <div style="display:flex;align-items:center;gap:3px;margin-top:3px;"><div style="width:4px;height:4px;background:#4ade80;border-radius:50%;"></div><span style="color:rgba(255,255,255,0.3);font-size:0.38rem;">Habitaciones libres</span></div>
+                  </div>
+                  <div style="background:rgba(200,169,110,0.07);border:1px solid rgba(200,169,110,0.16);border-radius:7px;padding:7px 10px;">
+                    <div style="color:rgba(200,169,110,0.45);font-size:0.38rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;">Valoración</div>
+                    <div style="display:flex;align-items:baseline;gap:2px;"><span style="color:#c8a96e;font-size:0.95rem;font-weight:800;line-height:1;">9.2</span><span style="color:rgba(255,255,255,0.25);font-size:0.38rem;">/10</span></div>
+                    <div style="color:rgba(255,255,255,0.25);font-size:0.38rem;margin-top:1px;">+400 reseñas</div>
+                  </div>
+                </div>
+              </div>
+              <div style="position:absolute;top:15%;left:30%;width:160px;height:160px;background:radial-gradient(circle,rgba(200,169,110,0.09) 0%,transparent 70%);pointer-events:none;"></div>
             </div>
           </div>
-
-          <!-- Detail panel -->
-          <div class="project-detail">
-            <div class="project-num">01</div>
-            <div class="project-industry">Hotelería & Turismo</div>
-            <h3>Hotel Miami<br/>Tucumán</h3>
-            <p>Rediseñamos su presencia online con foco en conversión: sistema de reservas visible, galería profesional y toda la información que un huésped necesita antes de llegar.</p>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-industry" style="color:#c8a96e;">Hotelería & Turismo</span>
+              <span class="project-num-badge">01</span>
+            </div>
+            <h3>Hotel Miami Tucumán</h3>
+            <p>Rediseñamos su presencia online con foco en conversión: reservas visibles, galería profesional y toda la info que un huésped necesita antes de llegar.</p>
             <div class="project-chips">
-              <span class="project-chip">Diseño web a medida</span>
+              <span class="project-chip">Diseño a medida</span>
               <span class="project-chip">Responsive</span>
-              <span class="project-chip">Formulario de reservas</span>
+              <span class="project-chip">Reservas online</span>
               <span class="project-chip">SEO local</span>
             </div>
-            <a href="https://hotelmiamituc.com" target="_blank" rel="noopener" class="project-link">Ver sitio en vivo</a>
+            <a href="https://hotelmiamituc.com" target="_blank" rel="noopener" class="project-link" style="color:#c8a96e;">Ver sitio en vivo</a>
           </div>
         </div>
 
-        <!-- ── PROYECTO 02: Café Aruba ── -->
-        <div class="project-row reverse reveal delay-2">
-          <!-- Detail panel -->
-          <div class="project-detail">
-            <div class="project-num">02</div>
-            <div class="project-industry">Gastronomía & Café</div>
-            <h3>Café<br/>Aruba</h3>
-            <p>Creamos un sitio que transmite el ambiente cálido del local: menú digital, galería de productos y botón directo a WhatsApp para pedidos y reservas.</p>
+        <!-- ── Café Aruba ── -->
+        <div class="project-card reveal delay-2">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-url">cafe-aruba.com</div>
+          </div>
+          <div class="browser-screen">
+            <div style="width:100%;height:100%;background:linear-gradient(150deg,#140a03 0%,#2c1508 60%,#140a03 100%);position:relative;overflow:hidden;">
+              <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(210,128,64,0.13) 0%,transparent 55%);"></div>
+              <!-- Navbar -->
+              <div style="position:absolute;top:0;left:0;right:0;height:32px;background:rgba(0,0,0,0.55);border-bottom:1px solid rgba(210,128,64,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 14px;z-index:3;">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <div style="width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#d28040,#b86830);display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:0.44rem;font-weight:800;">A</span></div>
+                  <span style="color:#d28040;font-size:0.58rem;font-weight:700;letter-spacing:0.13em;">CAFÉ ARUBA</span>
+                </div>
+                <div style="display:flex;gap:10px;align-items:center;">
+                  <span style="color:rgba(210,128,64,0.45);font-size:0.44rem;letter-spacing:0.1em;">MENÚ</span>
+                  <span style="color:rgba(210,128,64,0.45);font-size:0.44rem;letter-spacing:0.1em;">GALERÍA</span>
+                  <span style="background:#d28040;color:#140a03;font-size:0.42rem;font-weight:700;padding:3px 8px;border-radius:50px;letter-spacing:0.06em;">PEDIDOS</span>
+                </div>
+              </div>
+              <!-- Hero -->
+              <div style="position:absolute;top:32px;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 18px;gap:10px;">
+                <div style="flex:1;min-width:0;">
+                  <div style="color:#d28040;font-size:0.4rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:12px;height:1px;background:#d28040;"></span>Especialidad en café</div>
+                  <div style="color:#fff;font-size:1.25rem;font-weight:800;line-height:1.08;margin-bottom:6px;">Un café<br/>diferente.</div>
+                  <div style="color:rgba(255,255,255,0.38);font-size:0.46rem;line-height:1.55;margin-bottom:11px;max-width:130px;">Granos seleccionados y el menú gastronómico que hace volver a todos.</div>
+                  <div style="display:flex;gap:5px;">
+                    <span style="background:#d28040;color:#140a03;font-size:0.44rem;font-weight:700;padding:5px 11px;border-radius:50px;">Ver menú</span>
+                    <span style="border:1px solid rgba(210,128,64,0.28);color:rgba(210,128,64,0.65);font-size:0.44rem;padding:5px 9px;border-radius:50px;">Reservar mesa</span>
+                  </div>
+                </div>
+                <!-- Side cards -->
+                <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0;">
+                  <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(210,128,64,0.12);border-radius:7px;padding:7px 10px;min-width:95px;">
+                    <div style="color:rgba(210,128,64,0.45);font-size:0.38rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">Destacado hoy</div>
+                    <div style="color:#fff;font-size:0.58rem;font-weight:700;line-height:1.3;">Flat White<br/>+ Medialunas</div>
+                    <div style="color:#d28040;font-size:0.5rem;font-weight:700;margin-top:3px;">$2.800</div>
+                  </div>
+                  <div style="background:rgba(210,128,64,0.07);border:1px solid rgba(210,128,64,0.15);border-radius:7px;padding:7px 10px;">
+                    <div style="color:rgba(210,128,64,0.45);font-size:0.38rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:2px;">Reseñas</div>
+                    <div style="color:#d28040;font-size:0.58rem;">★★★★★</div>
+                    <div style="color:rgba(255,255,255,0.25);font-size:0.38rem;margin-top:1px;">+280 opiniones</div>
+                  </div>
+                </div>
+              </div>
+              <div style="position:absolute;top:15%;left:30%;width:160px;height:160px;background:radial-gradient(circle,rgba(210,128,64,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-meta">
+              <span class="project-industry" style="color:#d28040;">Gastronomía & Café</span>
+              <span class="project-num-badge">02</span>
+            </div>
+            <h3>Café Aruba</h3>
+            <p>Un sitio que transmite el ambiente cálido del local: menú digital, galería de productos y botón directo a WhatsApp para pedidos y reservas.</p>
             <div class="project-chips">
-              <span class="project-chip">Diseño web a medida</span>
+              <span class="project-chip">Diseño a medida</span>
               <span class="project-chip">Menú digital</span>
               <span class="project-chip">WhatsApp integrado</span>
               <span class="project-chip">Mobile first</span>
             </div>
-            <a href="https://cafe-aruba.com" target="_blank" rel="noopener" class="project-link">Ver sitio en vivo</a>
-          </div>
-
-          <!-- Browser mockup -->
-          <div class="project-browser">
-            <div class="browser-bar">
-              <div class="browser-dots"><span></span><span></span><span></span></div>
-              <div class="browser-url">cafe-aruba.com</div>
-            </div>
-            <div class="browser-screen">
-              <!-- Café Aruba mockup -->
-              <div style="width:100%;height:100%;background:linear-gradient(160deg,#1c0f07 0%,#2e1a0d 50%,#1c0f07 100%);position:relative;overflow:hidden;">
-                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(210,130,60,0.15) 0%,rgba(0,0,0,0) 55%);"></div>
-                <!-- Navbar -->
-                <div style="position:absolute;top:0;left:0;right:0;height:38px;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);border-bottom:1px solid rgba(210,140,70,0.15);display:flex;align-items:center;justify-content:space-between;padding:0 18px;z-index:3;">
-                  <div style="display:flex;align-items:center;gap:7px;">
-                    <div style="width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#d28040,#b86830);display:flex;align-items:center;justify-content:center;">
-                      <span style="color:white;font-size:0.5rem;font-weight:800;">A</span>
-                    </div>
-                    <span style="color:#d28040;font-size:0.65rem;font-weight:700;letter-spacing:0.14em;">CAFÉ ARUBA</span>
-                  </div>
-                  <div style="display:flex;gap:14px;align-items:center;">
-                    <span style="color:rgba(210,128,64,0.5);font-size:0.5rem;letter-spacing:0.1em;">MENÚ</span>
-                    <span style="color:rgba(210,128,64,0.5);font-size:0.5rem;letter-spacing:0.1em;">NOSOTROS</span>
-                    <span style="color:rgba(210,128,64,0.5);font-size:0.5rem;letter-spacing:0.1em;">GALERÍA</span>
-                    <span style="background:#d28040;color:#1c0f07;font-size:0.48rem;font-weight:700;padding:4px 10px;border-radius:50px;letter-spacing:0.08em;">PEDIDOS</span>
-                  </div>
-                </div>
-                <!-- Hero content -->
-                <div style="position:absolute;top:38px;left:0;right:0;bottom:0;display:flex;align-items:center;padding:0 24px;gap:16px;">
-                  <div style="flex:1;z-index:2;">
-                    <div style="color:#d28040;font-size:0.45rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
-                      <span style="display:inline-block;width:14px;height:1px;background:#d28040;"></span>
-                      Especialidad en café
-                    </div>
-                    <div style="color:#ffffff;font-size:1.55rem;font-weight:800;line-height:1.05;margin-bottom:8px;letter-spacing:-0.02em;">Un café<br/>diferente.</div>
-                    <div style="color:rgba(255,255,255,0.4);font-size:0.52rem;line-height:1.6;margin-bottom:14px;max-width:155px;">Granos seleccionados, ambiente único y el menú gastronómico que hace volver a todos.</div>
-                    <div style="display:flex;gap:7px;">
-                      <span style="background:#d28040;color:#1c0f07;font-size:0.5rem;font-weight:700;padding:6px 12px;border-radius:50px;letter-spacing:0.04em;">Ver menú</span>
-                      <span style="border:1px solid rgba(210,128,64,0.3);color:rgba(210,128,64,0.7);font-size:0.5rem;font-weight:600;padding:6px 12px;border-radius:50px;">Reservar mesa</span>
-                    </div>
-                  </div>
-                  <!-- Menu cards -->
-                  <div style="display:flex;flex-direction:column;gap:7px;flex-shrink:0;">
-                    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(210,128,64,0.14);border-radius:8px;padding:8px 11px;min-width:110px;">
-                      <div style="color:rgba(210,128,64,0.55);font-size:0.42rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;">Destacado del día</div>
-                      <div style="color:#fff;font-size:0.62rem;font-weight:700;">Flat White<br/>+ Medialunas</div>
-                      <div style="color:#d28040;font-size:0.55rem;font-weight:700;margin-top:4px;">$2.800</div>
-                    </div>
-                    <div style="background:rgba(210,128,64,0.08);border:1px solid rgba(210,128,64,0.18);border-radius:8px;padding:8px 11px;">
-                      <div style="color:rgba(210,128,64,0.55);font-size:0.42rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;">Reseñas</div>
-                      <div style="display:flex;gap:2px;margin-bottom:2px;">
-                        <span style="color:#d28040;font-size:0.6rem;">★★★★★</span>
-                      </div>
-                      <div style="color:rgba(255,255,255,0.3);font-size:0.42rem;">+280 opiniones</div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Warm glow -->
-                <div style="position:absolute;top:20%;left:35%;width:200px;height:200px;background:radial-gradient(circle,rgba(210,128,64,0.12) 0%,transparent 70%);pointer-events:none;"></div>
-                <div style="position:absolute;bottom:-30px;right:10%;width:160px;height:160px;background:radial-gradient(circle,rgba(210,128,64,0.07) 0%,transparent 70%);pointer-events:none;"></div>
-              </div>
-            </div>
+            <a href="https://cafe-aruba.com" target="_blank" rel="noopener" class="project-link" style="color:#d28040;">Ver sitio en vivo</a>
           </div>
         </div>
 
