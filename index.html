@@ -43,29 +43,7 @@
       --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
     }
 
-    /* ===== CUSTOM CURSOR ===== */
-    @media (pointer: fine) { body { cursor: none; } }
-    .cursor-dot {
-      position: fixed; width: 7px; height: 7px;
-      background: var(--green); border-radius: 50%;
-      pointer-events: none; z-index: 99999;
-      transform: translate(-50%,-50%);
-      transition: width 0.15s, height 0.15s, opacity 0.15s;
-      display: none;
-    }
-    .cursor-ring {
-      position: fixed; width: 30px; height: 30px;
-      border: 1.5px solid rgba(90,158,114,0.45); border-radius: 50%;
-      pointer-events: none; z-index: 99998;
-      transform: translate(-50%,-50%);
-      transition: width 0.3s cubic-bezier(0.4,0,0.2,1), height 0.3s cubic-bezier(0.4,0,0.2,1), border-color 0.2s;
-      display: none;
-    }
-    .cursor-dot.grow { width: 12px; height: 12px; }
-    .cursor-ring.grow { width: 46px; height: 46px; border-color: rgba(90,158,114,0.25); }
-    @media (pointer: fine) { .cursor-dot, .cursor-ring { display: block; } }
-
-    /* ===== SCROLL ANIMATIONS ===== */
+/* ===== SCROLL ANIMATIONS ===== */
     .reveal {
       opacity: 0;
       transform: translateY(38px);
@@ -1481,77 +1459,47 @@
     #porque .section-title strong { color: var(--green); }
     .porque-header { text-align: center; margin-bottom: 3.5rem; }
     .porque-header .section-subtitle { margin: 0 auto; color: rgba(255,255,255,0.45); }
-    .porque-table {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.07);
+    .porque-features {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      max-width: 820px;
+      margin: 0 auto;
     }
-    .porque-col {
-      padding: 0;
-    }
-    .porque-col-head {
-      padding: 1.5rem 2rem;
+    .porque-feat {
       display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .porque-col--ours .porque-col-head {
-      background: var(--green);
-      color: #fff;
-    }
-    .porque-col--them .porque-col-head {
+      align-items: flex-start;
+      gap: 1rem;
       background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 1.4rem 1.5rem;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .porque-col-head-icon {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem;
-      flex-shrink: 0;
+    .porque-feat:hover {
+      background: rgba(90,158,114,0.08);
+      border-color: rgba(90,158,114,0.25);
     }
-    .porque-col--ours .porque-col-head-icon { background: rgba(255,255,255,0.2); }
-    .porque-col--them .porque-col-head-icon { background: rgba(255,255,255,0.06); }
-    .porque-row {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      font-size: 0.87rem;
-      transition: background 0.2s;
-    }
-    .porque-row:last-child { border-bottom: none; }
-    .porque-col--ours .porque-row {
-      color: rgba(255,255,255,0.82);
-      background: rgba(90,158,114,0.04);
-    }
-    .porque-col--ours .porque-row:hover { background: rgba(90,158,114,0.09); }
-    .porque-col--them .porque-row {
-      color: rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.02);
-    }
-    .porque-col--them .porque-row:hover { background: rgba(255,255,255,0.04); }
-    .porque-icon-check {
-      width: 20px; height: 20px; border-radius: 50%;
+    .porque-feat-icon {
+      width: 36px; height: 36px;
       background: rgba(90,158,114,0.15);
       color: var(--green);
+      border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.65rem; font-weight: 700; flex-shrink: 0;
+      font-size: 1rem;
+      flex-shrink: 0;
     }
-    .porque-icon-x {
-      width: 20px; height: 20px; border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      color: rgba(255,255,255,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.65rem; font-weight: 700; flex-shrink: 0;
+    .porque-feat strong {
+      display: block;
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .porque-feat p {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.82rem;
+      line-height: 1.55;
+      margin: 0;
     }
 
     /* ===== FAQ ===== */
@@ -1620,7 +1568,7 @@
     .faq-answer p strong { color: var(--dark); }
 
     @media (max-width: 768px) {
-      .porque-table { grid-template-columns: 1fr; }
+      .porque-features { grid-template-columns: 1fr; }
       .porque-col--them { border-top: 1px solid rgba(255,255,255,0.07); }
       .porque-row { padding: 0.85rem 1.25rem; }
       .porque-col-head { padding: 1.1rem 1.25rem; }
@@ -1630,8 +1578,6 @@
   </style>
 </head>
 <body>
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar" id="navbar">
@@ -1877,37 +1823,51 @@
     <div class="section-inner">
       <div class="porque-header reveal">
         <div class="section-tag" style="justify-content:center;">Por qué nosotros</div>
-        <h2 class="section-title" style="color:#fff;">Diseño que<br><strong>marca la diferencia.</strong></h2>
-        <p class="section-subtitle porque-header" style="color:rgba(255,255,255,0.45);max-width:460px;margin:0 auto;">No es lo mismo una web a medida que una plantilla cualquiera. Acá te mostramos por qué importa.</p>
+        <h2 class="section-title" style="color:#fff;">Todo lo que necesitás<br><strong>en un solo lugar.</strong></h2>
+        <p class="section-subtitle" style="color:rgba(255,255,255,0.45);max-width:480px;margin:0 auto;">Cada detalle está pensado para que tu web no solo se vea bien, sino que funcione y convierta.</p>
       </div>
-      <div class="porque-table reveal delay-2">
-        <!-- Columna izquierda: proyecto.07 -->
-        <div class="porque-col porque-col--ours">
-          <div class="porque-col-head">
-            <div class="porque-col-head-icon">✦</div>
-            proyecto.07
+      <div class="porque-features reveal delay-2">
+        <div class="porque-feat">
+          <div class="porque-feat-icon">✦</div>
+          <div>
+            <strong>Diseño 100% a medida</strong>
+            <p>Tu sitio es único. Pensado desde cero para tu marca, tu público y tus objetivos.</p>
           </div>
-          <div class="porque-row"><div class="porque-icon-check">✓</div>Diseño único, nadie tiene el mismo sitio</div>
-          <div class="porque-row"><div class="porque-icon-check">✓</div>SEO técnico configurado desde el día uno</div>
-          <div class="porque-row"><div class="porque-icon-check">✓</div>Velocidad y rendimiento optimizados</div>
-          <div class="porque-row"><div class="porque-icon-check">✓</div>100% adaptado a tu marca e identidad</div>
-          <div class="porque-row"><div class="porque-icon-check">✓</div>Estrategia de conversión incluida</div>
-          <div class="porque-row"><div class="porque-icon-check">✓</div>Soporte postventa real</div>
-          <div class="porque-row"><div class="porque-icon-check">✓</div>Precio claro y sin sorpresas</div>
         </div>
-        <!-- Columna derecha: plantillas genéricas -->
-        <div class="porque-col porque-col--them">
-          <div class="porque-col-head">
-            <div class="porque-col-head-icon">◻</div>
-            Plantilla genérica
+        <div class="porque-feat">
+          <div class="porque-feat-icon">⚡</div>
+          <div>
+            <strong>Velocidad y rendimiento</strong>
+            <p>Código limpio y optimizado para que cargue rápido en cualquier dispositivo.</p>
           </div>
-          <div class="porque-row"><div class="porque-icon-x">✕</div>Miles de sitios idénticos en internet</div>
-          <div class="porque-row"><div class="porque-icon-x">✕</div>SEO ignorado o mal configurado</div>
-          <div class="porque-row"><div class="porque-icon-x">✕</div>Código pesado, carga lenta</div>
-          <div class="porque-row"><div class="porque-icon-x">✕</div>Aspecto genérico sin personalidad</div>
-          <div class="porque-row"><div class="porque-icon-x">✕</div>Sin estrategia, solo apariencia</div>
-          <div class="porque-row"><div class="porque-icon-x">✕</div>Soporte inexistente o pagado extra</div>
-          <div class="porque-row"><div class="porque-icon-x">✕</div>Costos ocultos y suscripciones</div>
+        </div>
+        <div class="porque-feat">
+          <div class="porque-feat-icon">◎</div>
+          <div>
+            <strong>SEO desde el día uno</strong>
+            <p>Estructura técnica lista para posicionarse en Google sin configuración extra.</p>
+          </div>
+        </div>
+        <div class="porque-feat">
+          <div class="porque-feat-icon">→</div>
+          <div>
+            <strong>Estrategia de conversión</strong>
+            <p>Diseñamos para que tus visitantes se conviertan en clientes reales.</p>
+          </div>
+        </div>
+        <div class="porque-feat">
+          <div class="porque-feat-icon">✉</div>
+          <div>
+            <strong>Soporte postventa</strong>
+            <p>No desaparecemos al entregar. Estamos disponibles para cambios y consultas.</p>
+          </div>
+        </div>
+        <div class="porque-feat">
+          <div class="porque-feat-icon">$</div>
+          <div>
+            <strong>Precio claro y sin sorpresas</strong>
+            <p>Sabés exactamente lo que pagás. Sin costos ocultos ni suscripciones.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -2171,8 +2131,8 @@
           <div class="faq-answer"><p>Sí. Incluimos <strong>rondas de revisión</strong> durante el proceso para que el resultado sea exactamente lo que esperabas. Después de la entrega, ofrecemos soporte postventa y podemos gestionar cambios según tus necesidades.</p></div>
         </div>
         <div class="faq-item reveal delay-5">
-          <button class="faq-question">¿Usan plantillas o diseñan desde cero?<span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p><strong>Diseñamos desde cero, siempre.</strong> Cada proyecto es único. No usamos constructores de páginas ni plantillas prediseñadas. Esto garantiza un sitio más rápido, mejor posicionado en Google y con una identidad visual que nadie más tiene.</p></div>
+          <button class="faq-question">¿Cómo garantizan que mi sitio sea único?<span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p><strong>Cada proyecto parte de cero.</strong> Analizamos tu marca, tu público y tus objetivos antes de escribir una sola línea de código. El resultado es un sitio construido específicamente para vos, con una identidad visual que refleja tu negocio y nadie más tiene.</p></div>
         </div>
         <div class="faq-item reveal delay-6">
           <button class="faq-question">¿Mi web va a aparecer en Google?<span class="faq-icon">+</span></button>
@@ -2479,34 +2439,7 @@
       });
     });
 
-    // ── Custom cursor ──
-    const cursorDot  = document.getElementById('cursorDot');
-    const cursorRing = document.getElementById('cursorRing');
-    if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
-      let rx = 0, ry = 0;
-      document.addEventListener('mousemove', e => {
-        const { clientX: x, clientY: y } = e;
-        cursorDot.style.left  = x + 'px';
-        cursorDot.style.top   = y + 'px';
-        rx += (x - rx) * 0.14;
-        ry += (y - ry) * 0.14;
-        cursorRing.style.left = rx + 'px';
-        cursorRing.style.top  = ry + 'px';
-      });
-      requestAnimationFrame(function loop() {
-        cursorRing.style.left = (parseFloat(cursorRing.style.left)||0) + ((parseFloat(cursorDot.style.left)||0) - (parseFloat(cursorRing.style.left)||0)) * 0.14 + 'px';
-        cursorRing.style.top  = (parseFloat(cursorRing.style.top)||0)  + ((parseFloat(cursorDot.style.top)||0)  - (parseFloat(cursorRing.style.top)||0))  * 0.14 + 'px';
-        requestAnimationFrame(loop);
-      });
-      document.querySelectorAll('a, button, [role="button"], .project-card, .step-card, .plan-card, .faq-question').forEach(el => {
-        el.addEventListener('mouseenter', () => { cursorDot.classList.add('grow'); cursorRing.classList.add('grow'); });
-        el.addEventListener('mouseleave', () => { cursorDot.classList.remove('grow'); cursorRing.classList.remove('grow'); });
-      });
-      document.addEventListener('mouseleave', () => { cursorDot.style.opacity = '0'; cursorRing.style.opacity = '0'; });
-      document.addEventListener('mouseenter', () => { cursorDot.style.opacity = '1'; cursorRing.style.opacity = '1'; });
-    }
-
-    // ── FAQ accordion ──
+// ── FAQ accordion ──
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.closest('.faq-item');
