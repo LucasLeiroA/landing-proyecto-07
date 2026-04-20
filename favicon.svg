@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Key outer body -->
+  <rect x="1" y="1" width="30" height="30" rx="7" ry="7" fill="#2c3330"/>
+  <!-- Key inner border (keycap 3D effect) -->
+  <rect x="3.5" y="3.5" width="25" height="22" rx="5" ry="5" fill="none" stroke="#3d4e47" stroke-width="1"/>
+  <!-- P -->
+  <text x="6" y="20" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="800" fill="#ffffff" letter-spacing="-0.5">P</text>
+  <!-- .07 in green -->
+  <text x="15" y="20" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#5a9e72" letter-spacing="-0.3">.07</text>
+  <!-- Bottom key shadow -->
+  <rect x="1" y="25" width="30" height="6" rx="7" ry="7" fill="#1e2925"/>
+</svg>
